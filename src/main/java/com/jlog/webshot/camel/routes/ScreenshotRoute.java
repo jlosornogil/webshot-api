@@ -26,7 +26,12 @@ public class ScreenshotRoute extends RouteBuilder {
     public void configure() throws Exception {
         from(ROUTE_URI)
                 .log("Capturing the web")
-                .to(HeadlessFirefoxScreenshotRoute.ROUTE_URI)
+                .choice()
+                    .when(simple("${body.engine} == 'CHR'"))
+                        .to(HeadlessChromeScreenshotRoute.ROUTE_URI)
+                    .otherwise()
+                        .to(HeadlessFirefoxScreenshotRoute.ROUTE_URI)
+                .end()
                 .log("Moving the screenshot to the static resources directory")
                 .process(ex -> {
                     UUID screenshotId = UUID.randomUUID();

@@ -22,6 +22,14 @@ RUN wget --no-verbose -O FirefoxSetup.tar.bz2 "https://download.mozilla.org/?pro
     && ln -s /opt/firefox/firefox/firefox /usr/lib/firefox-esr/firefox-esr
 
 #=========
+# Chrome
+#=========
+RUN wget -q -O - "https://dl.google.com/linux/linux_signing_key.pub" | apt-key add - \
+    && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google-chrome.list \
+    && apt-get update \
+    && apt-get -y install google-chrome-stable
+
+#=========
 # Webshot
 #=========
 ENV APP_HOME=/opt/webshot-api

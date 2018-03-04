@@ -7,6 +7,14 @@ import java.io.Serializable;
  */
 public class Screenshot implements Serializable {
 
+    enum Engine {
+        /** Headless Firefox */
+        FF,
+        /** Headless Chrome */
+        CHR
+    }
+
+    private Engine engine;
     private String url;
     private Integer width;
     private Integer height;
@@ -33,6 +41,14 @@ public class Screenshot implements Serializable {
 
     public void setHeight(Integer height) {
         this.height = height;
+    }
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(final Engine engine) {
+        this.engine = engine;
     }
 
     @Override

@@ -4,7 +4,6 @@ A microservice to generate screenshots of web pages from headless web browsers.
 
 ## TODO
 
-- Create HeadlessChromeRoute to work with a headless Chrome.
 - Create PhantomJSRoute to work with PhantomJS.
 - Create a job to periodically delete old screenshots.
 - Add new parameters to the Screenshot model.
